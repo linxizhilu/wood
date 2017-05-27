@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>上海木易国际有限公司</title>
+		<title>上海木忆商务咨询有限公司</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 	</head>
 	<body>
+		<!--language nav-->
+		<section id="languagechange">
+			<ul>
+				<li v-for="lang in languages" :class="lang.className" @click="changeLang(lang.type)" :data-type="lang.type"><a href="javascript:;"><img :src="lang.path" alt="" /></a></li>
+				<!--<li class="lang_usa"><a href="javascript:;"><img src="assets/css/images/usa.jpg" alt="" /></a></li>
+				<li class="lang_els"><a href="javascript:;"><img src="assets/css/images/russian.jpg" alt="" /></a></li>-->
+			</ul>
+		</section>
+		<section id="logo">
+			<div>
+				<h1 class="css-companyname-first">{{language}}</h1>	
+				<a href="#"><img src="assets/css/images/logo.png"/></a>
+				<h1 class="css-companyname-second">{{language}}</h1>					
+			</div>			
+		</section>
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
 						<ul>
-							<li><a href="#intro">首页</a></li>
-							<li><a href="#one">产品介绍</a></li>
+							<li v-for="lang in language"><a :href="lang.anchor">{{lang.name}}</a></li>
+							<!--<li><a href="#one">产品介绍</a></li>
 							<li><a href="#two">合作品牌</a></li>
-							<li><a href="#three">联系我们</a></li>
+							<li><a href="#three">联系我们</a></li>-->
 						</ul>
 					</nav>
 				</div>
@@ -30,153 +46,250 @@
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-							<h1>木易</h1>
-							<p>公司简介.</p>
+							<h2>Wood from all over the world</h2>
+							<p>{{language.info}}</p>
 							<ul class="actions">
-								<li><a href="#one" class="button scrolly">查看产品</a></li>
+								<li><a href="#productList" class="button scrolly">{{language.button}}</a></li>
 							</ul>
 						</div>
 					</section>
 
 				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>产品名称</h2>
-									<p>产品介绍.</p>
-									<ul class="actions">
-										<li><a href="javascript:;" class="button">查看相关图片</a></li>
-									</ul>
-								</div>
+				<section id="productList">
+					<section v-for="lang,value,index in language" class="wrapper style2 spotlights">					
+						<a href="#" class="image"><img :src="lang.image" alt="" data-position="center center" /></a>
+						<div class="content">
+							<div class="inner">
+								<h2>{{lang.name}}</h2>
+								<p>{{lang.info}}</p>
+								<ul class="actions">
+									<li><a href="javascript:;" class="button">{{lang.button}}</a></li>
+								</ul>
 							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>产品名称</h2>
-									<p>产品介绍.</p>
-									<ul class="actions">
-										<li><a href="javascript:;" class="button">查看相关图片</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>产品名称</h2>
-									<p>产品介绍.</p>
-									<ul class="actions">
-										<li><a href="javascript:;" class="button">查看相关图片</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
+						</div>
 					</section>
+					<!--<section>
+						<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
+						<div class="content">
+							<div class="inner">
+								<h2>云杉</h2>
+								<p>云杉属（拉丁文：Picea）是松科下的一个属，为常绿乔木植物。该属共有约35种，中国有19种，另引种栽培2种，分布于北温带。常绿乔木；树皮薄，鳞片状；枝通常轮生；叶线形，螺旋排列，通常四角形；球花顶生或腋生。材质优良，纹理细致，可供工业原料使用。多数种类为今后造林和林业经营上的主要树种。</p>
+								<ul class="actions">
+									<li><a href="javascript:;" class="button">查看相关图片</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
+						<div class="content">
+							<div class="inner">
+								<h2>云杉</h2>
+								<p>云杉属（拉丁文：Picea）是松科下的一个属，为常绿乔木植物。该属共有约35种，中国有19种，另引种栽培2种，分布于北温带。常绿乔木；树皮薄，鳞片状；枝通常轮生；叶线形，螺旋排列，通常四角形；球花顶生或腋生。材质优良，纹理细致，可供工业原料使用。多数种类为今后造林和林业经营上的主要树种。</p>
+								<ul class="actions">
+									<li><a href="javascript:;" class="button">查看相关图片</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>-->
+				</section>
 
 				<!-- Two -->
 					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>品牌合作</h2>
-							<!-- <p></p> -->
-							<div class="features">
-								<section>
-									<span class="icon major fa-code"></span>
-									<h3>名称</h3>
-									<!-- <p>名称.</p> -->
-								</section>
-								<section>
-									<span class="icon major fa-lock"></span>
-									<h3>名称</h3>
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-								</section>
-								<section>
-									<span class="icon major fa-cog"></span>
-									<h3>名称</h3>
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-								</section>
-								<section>
-									<span class="icon major fa-desktop"></span>
-									<h3>名称</h3>
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-								</section>
-								<section>
-									<span class="icon major fa-chain"></span>
-									<h3>名称</h3>
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-								</section>
-								<section>
-									<span class="icon major fa-diamond"></span>
-									<h3>名称</h3>
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-								</section>
-							</div>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button">Learn more</a></li>
-							</ul> -->
-						</div>
-					</section>
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
 						<div class="inner">
-							<h2>联系我们</h2>
-							<p>联系我们一起合作.</p>
-							<!-- <div class="split style1">
+
+							<h2>品牌合作</h2>
+
+							<!-- <p></p> -->
+
+							<div class="features">
+
 								<section>
-									<form method="post" action="#">
-										<div class="field half first">
-											<label for="name">联系人</label>
-											<input type="text" name="name" id="联系人" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="5"></textarea>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section> -->
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>地址</h3>
-											<span>上海市<br />
-											宝山区<br />
-											陆翔路111弄3号1209室
-											</span>
-										</li>
-										<li>
-											<h3>邮箱</h3>
-											<a href="#">steven@wooodfield-china.com</a>
-										</li>
-										<li>
-											<h3>联系方式</h3>
-											<span>(+86) 021-123456</span>
-										</li>
-										<!-- <li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li> -->
-									</ul>
+
+									<img src="images/company0.jpg" alt="">
+
+									<h3>Aracuo</h3>
+
+									<!-- <span class="icon major fa-code">
+
+									</span> -->
+
+									<!-- <p>名称.</p> -->
+
 								</section>
+
+								<section>
+
+									<img src="images/company0.jpg" alt="">
+
+									<h3>Aracuo</h3>
+
+									<p>知名辐射松生产商</p>
+
+									<!-- <span class="icon major fa-lock"></span>
+
+									<h3>名称</h3> -->
+
+									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
+
+								</section>
+
+								<section>
+
+									<img src="images/company1.jpg" alt="">
+
+									<h3>nterex</h3>
+
+									<p>加拿大SPF，铁杉，花旗松等北美木材供应商</p>
+
+									<!-- <span class="icon major fa-cog"></span>
+
+									<h3>名称</h3> -->
+
+									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
+
+								</section>
+
+								<section>
+
+									<img src="images/company0.jpg" alt="">
+
+									<h3>Aracuo</h3>
+
+									<p>知名辐射松生产商</p>
+
+									<!-- <span class="icon major fa-desktop"></span>
+
+									<h3>名称</h3> -->
+
+									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
+
+								</section>
+
+								<section>
+
+									<img src="images/company1.jpg" alt="">
+
+									<h3>nterex</h3>
+
+									<p>加拿大SPF，铁杉，花旗松等北美木材供应商</p>
+
+									<!-- <span class="icon major fa-chain"></span>
+
+									<h3>名称</h3> -->
+
+									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
+
+								</section>
+
+								<section>
+
+									<img src="images/company0.jpg" alt="">
+
+									<h3>Aracuo</h3>
+
+									<p>知名辐射松生产商</p>
+
+									<!-- <span class="icon major fa-diamond"></span>
+
+									<h3>名称</h3> -->
+
+									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
+
+								</section>
+
 							</div>
+
+							<!-- <ul class="actions">
+
+								<li><a href="#" class="button">Learn more</a></li>
+
+							</ul> -->
+
 						</div>
+
+					</section>
+					
+				<!-- Three -->
+						<section id="three" class="wrapper style1 fade-up">
+
+						<div class="inner">
+
+							<h2>联系我们</h2>
+
+							<p>联系我们一起合作.</p>
+
+								<section>
+
+									<ul class="contact">
+
+										<li>
+
+											<h3>地址</h3>
+
+											<span>上海市<br />
+
+											宝山区<br />
+
+											陆翔路111弄3号1209室
+
+											</span>
+
+										</li>
+
+										<li>
+
+											<h3>邮箱</h3>
+
+											<span>王浩宇</span><a href="mailto:steven@wooodfield-china.com ">&nbsp;steven@wooodfield-china.com</a>
+
+											<br/>
+
+											<span>撒兴建</span><a href="mailto:alex@woodfield-china.com ">&nbsp;alex@woodfield-china.com </a>
+
+										</li>
+
+										<li>
+
+											<h3>联系方式</h3>
+
+											<span>王浩宇</span><span>&nbsp;(+86) 156 1875 7908</span>
+
+											<br/>
+
+											<span>撒兴建</span><span>&nbsp;(+86) 182 2127 9859</span>
+
+										</li>
+
+										<!-- <li>
+
+											<h3>Social</h3>
+
+											<ul class="icons">
+
+												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+
+												<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+
+												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
+
+												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+
+												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+
+											</ul>
+
+										</li> -->
+
+									</ul>
+
+								</section>
+
+							</div>
+
+						</div>
+
 					</section>
 
 			</div>
@@ -198,6 +311,7 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/vue-action.js" type="text/javascript" charset="utf-8"></script>
 
 	</body>
 </html>

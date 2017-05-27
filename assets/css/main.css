@@ -3080,6 +3080,7 @@ body.is-ie .wrapper.fullscreen {
     min-height: 100%;
     opacity: 1;
     width: 100%;
+    /*margin-top: 50px;*/
 }
 
 body.is-ie #sidebar>.inner {
@@ -3327,9 +3328,11 @@ body.is-loading #sidebar nav ul li {
         overflow: hidden;
         padding: 0;
         text-align: center;
-        top: 0;
+        /*top: 0;*/
+       top: 30px;
         width: 100%;
     }
+    
     #sidebar>.inner {
         -moz-flex-direction: row;
         -webkit-flex-direction: row;
@@ -3371,6 +3374,7 @@ body.is-loading #sidebar nav ul li {
         background-image: none;
         background-color: #b74e91;
     }
+    
 }
 
 @media screen and (max-width: 736px) {
@@ -3410,4 +3414,143 @@ body.is-loading #sidebar nav ul li {
     #intro {
         background-attachment: scroll;
     }
+}
+
+/*language change*/
+#languagechange{
+	display: block;
+	position: fixed;
+	z-index: 10001;
+	width: 100%;
+}
+#languagechange ul{
+	list-style: none;
+	background: #6a7f5b;
+	text-align: right;
+	padding-right: 50px;
+	margin: 0;
+}
+#languagechange ul li{
+	display: inline-block;
+	text-align: center;
+}
+#languagechange ul li a{
+	text-decoration: none;
+	border-bottom: none;
+	display: block;
+	height: 40px;
+}
+#languagechange ul li img{
+	max-width: 80%;
+    margin-top: 5px;
+    max-height: 100%;
+}
+@media screen and (max-width: 1280px) {
+	#languagechange ul{
+		
+	}
+	#languagechange ul li a{
+		height: 30px;
+	}
+}
+@media screen and (max-width: 736px) {
+	#languagechange ul{
+		padding-right: 10px;
+	}
+}
+
+
+#logo{
+	display: inline-block;
+    position: fixed;
+    z-index: 10001;
+    top: 50px;
+    width: 18em;
+	text-align: center;
+}
+#logo .css-companyname-first{
+	display: none;
+	transition: all 0.5s; 
+}
+#logo a{
+	border-bottom: none;
+}
+#logo a img{
+	box-shadow: -2px -2px 15px black;
+	transition: all 0.5s ease 0s;
+	border-radius: 2%;
+}
+#logo a img:hover{
+	text-shadow: 5px 5px 10px black;	
+}
+#logo h1{
+	/*text-indent: -99999px;
+	height: 0px;*/
+	font-size: 22px;
+	text-shadow: 2px 2px 5px black;	
+	transition: all 0.5s ease 0s;
+}
+#logo h1:hover{
+	text-shadow: 5px 5px 10px black;	
+	cursor: pointer;
+}
+@media screen and (max-width: 1280px) {
+	#logo{
+		top: 0px;
+		text-align: left;	
+		left: 20px;	
+	}
+	#logo .css-companyname-first{
+		display: block;
+		margin-bottom: 0;
+		margin-top: 5px;
+		font-size: 18px;
+	}
+	#logo .css-companyname-second{
+		display: none;
+	}
+	#logo img{
+		height: 60px;
+		max-width: 100%;
+		margin-left: 50px;
+		box-shadow: none;
+	}
+}
+@media screen and (max-width: 736px) {
+	#logo .css-companyname-first{
+		display: none;
+	}
+	#logo img{
+		margin-left: 0;
+	}
+}
+/*产品列表*/
+#productList{
+	
+}
+#productList .wrapper{
+	padding:20px 0 0 450px;
+	min-height: 470px;
+	border-bottom: 2px solid black;
+	
+	
+}
+#productList .wrapper .image{
+	position: absolute;
+	left: 20px;
+	box-shadow: 2px 2px 5px black;
+	transition: all 0.5s ease-in-out;
+}
+#productList .wrapper .image:hover{
+	box-shadow: 5px 5px 15px black;
+}
+#productList .wrapper img{
+	max-width:328px;
+	height: auto;
+	max-height:438px;
+	widows: auto;
+}
+#productList .wrapper .actions{
+	padding-bottom: 50px;
+	margin-bottom: 0;
 }
