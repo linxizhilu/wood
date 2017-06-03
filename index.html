@@ -8,25 +8,29 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="stylesheet" href="assets/css/swiper.css" />
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 	</head>
 	<body>
-		<!--language nav-->
-		<section id="languagechange">
-			<ul>
-				<li v-for="lang in languages" :class="lang.className" @click="changeLang(lang.type)" :data-type="lang.type"><a href="javascript:;"><img :src="lang.path" alt="" /></a></li>
-				<!--<li class="lang_usa"><a href="javascript:;"><img src="assets/css/images/usa.jpg" alt="" /></a></li>
-				<li class="lang_els"><a href="javascript:;"><img src="assets/css/images/russian.jpg" alt="" /></a></li>-->
-			</ul>
-		</section>
-		<section id="logo">
-			<div>
-				<h1 class="css-companyname-first">{{language}}</h1>	
-				<a href="#"><img src="assets/css/images/logo.png"/></a>
-				<h1 class="css-companyname-second">{{language}}</h1>					
-			</div>			
-		</section>
-		<!-- Sidebar -->
+		<div class="content">
+					<!--language nav-->
+			<section id="languagechange">
+				<ul>
+					<li v-for="lang in languages" :class="lang.className" @click="changeLang(lang.type)" :data-type="lang.type">
+						<a href="javascript:;" ><img :src="lang.path" alt=""/></a>
+					</li>
+					<!--<li class="lang_usa"><a href="javascript:;"><img src="assets/css/images/usa.jpg" alt="" /></a></li>
+					<li class="lang_els"><a href="javascript:;"><img src="assets/css/images/russian.jpg" alt="" /></a></li>-->
+				</ul>
+			</section>
+			<section id="logo">
+				<div>
+					<h1 class="css-companyname-first">{{language}}</h1>	
+					<a href="#"><img src="assets/css/images/logo.png"/></a>
+					<h1 class="css-companyname-second">{{language}}</h1>					
+				</div>			
+			</section>
+			<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
@@ -39,10 +43,10 @@
 					</nav>
 				</div>
 			</section>
-
-		<!-- Wrapper -->
+	
+			<!-- Wrapper -->
 			<div id="wrapper">
-
+	
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
@@ -53,7 +57,7 @@
 							</ul>
 						</div>
 					</section>
-
+	
 				<!-- One -->
 				<section id="productList">
 					<section v-for="lang,value,index in language" class="wrapper style2 spotlights">					
@@ -63,245 +67,161 @@
 								<h2>{{lang.name}}</h2>
 								<p>{{lang.info}}</p>
 								<ul class="actions">
-									<li><a href="javascript:;" class="button">{{lang.button}}</a></li>
+									<li><a href="javascript:;" class="button" @click="showProductImgList(lang.type)">{{lang.button}}</a></li>
 								</ul>
 							</div>
 						</div>
 					</section>
-					<!--<section>
-						<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-						<div class="content">
-							<div class="inner">
-								<h2>云杉</h2>
-								<p>云杉属（拉丁文：Picea）是松科下的一个属，为常绿乔木植物。该属共有约35种，中国有19种，另引种栽培2种，分布于北温带。常绿乔木；树皮薄，鳞片状；枝通常轮生；叶线形，螺旋排列，通常四角形；球花顶生或腋生。材质优良，纹理细致，可供工业原料使用。多数种类为今后造林和林业经营上的主要树种。</p>
-								<ul class="actions">
-									<li><a href="javascript:;" class="button">查看相关图片</a></li>
-								</ul>
-							</div>
-						</div>
-					</section>
-					<section>
-						<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-						<div class="content">
-							<div class="inner">
-								<h2>云杉</h2>
-								<p>云杉属（拉丁文：Picea）是松科下的一个属，为常绿乔木植物。该属共有约35种，中国有19种，另引种栽培2种，分布于北温带。常绿乔木；树皮薄，鳞片状；枝通常轮生；叶线形，螺旋排列，通常四角形；球花顶生或腋生。材质优良，纹理细致，可供工业原料使用。多数种类为今后造林和林业经营上的主要树种。</p>
-								<ul class="actions">
-									<li><a href="javascript:;" class="button">查看相关图片</a></li>
-								</ul>
-							</div>
-						</div>
-					</section>-->
+						
 				</section>
-
+	
 				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-
+					<section id="cooperation" class="wrapper style3 fade-up">
+	
 						<div class="inner">
-
-							<h2>品牌合作</h2>
-
+	
+							<h2>{{language.title}}</h2>
+	
 							<!-- <p></p> -->
-
+	
 							<div class="features">
-
-								<section>
-
-									<img src="images/company0.jpg" alt="">
-
-									<h3>Aracuo</h3>
-
+	
+								<section v-for="brand in language.brandList">
+	
+									<img :src="brand.logo" alt="">
+	
+									<h3>{{brand.name}}</h3>
+									<p>{{brand.info}}</p>
+	
 									<!-- <span class="icon major fa-code">
-
+	
 									</span> -->
-
+	
 									<!-- <p>名称.</p> -->
-
+	
 								</section>
-
-								<section>
-
-									<img src="images/company0.jpg" alt="">
-
-									<h3>Aracuo</h3>
-
-									<p>知名辐射松生产商</p>
-
-									<!-- <span class="icon major fa-lock"></span>
-
-									<h3>名称</h3> -->
-
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-
-								</section>
-
-								<section>
-
-									<img src="images/company1.jpg" alt="">
-
-									<h3>nterex</h3>
-
-									<p>加拿大SPF，铁杉，花旗松等北美木材供应商</p>
-
-									<!-- <span class="icon major fa-cog"></span>
-
-									<h3>名称</h3> -->
-
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-
-								</section>
-
-								<section>
-
-									<img src="images/company0.jpg" alt="">
-
-									<h3>Aracuo</h3>
-
-									<p>知名辐射松生产商</p>
-
-									<!-- <span class="icon major fa-desktop"></span>
-
-									<h3>名称</h3> -->
-
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-
-								</section>
-
-								<section>
-
-									<img src="images/company1.jpg" alt="">
-
-									<h3>nterex</h3>
-
-									<p>加拿大SPF，铁杉，花旗松等北美木材供应商</p>
-
-									<!-- <span class="icon major fa-chain"></span>
-
-									<h3>名称</h3> -->
-
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-
-								</section>
-
-								<section>
-
-									<img src="images/company0.jpg" alt="">
-
-									<h3>Aracuo</h3>
-
-									<p>知名辐射松生产商</p>
-
-									<!-- <span class="icon major fa-diamond"></span>
-
-									<h3>名称</h3> -->
-
-									<!-- <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p> -->
-
-								</section>
-
+	
+	
 							</div>
-
+	
 							<!-- <ul class="actions">
-
+	
 								<li><a href="#" class="button">Learn more</a></li>
-
+	
 							</ul> -->
-
+	
 						</div>
-
+	
 					</section>
 					
 				<!-- Three -->
-						<section id="three" class="wrapper style1 fade-up">
-
+						<section id="contactus" class="wrapper style1 fade-up">
+	
 						<div class="inner">
-
-							<h2>联系我们</h2>
-
-							<p>联系我们一起合作.</p>
-
+	
+							<h2>{{language.title}}</h2>
+	
+							<p>{{language.subtitle}}</p>
+	
 								<section>
-
+	
 									<ul class="contact">
-
+	
 										<li>
-
-											<h3>地址</h3>
-
-											<span>上海市<br />
-
-											宝山区<br />
-
-											陆翔路111弄3号1209室
-
+	
+											<h3>{{language.addressName}}</h3>
+	
+											<span>{{language.address.pro}}<br />
+	
+											{{language.address.city}}<br />
+	
+											{{language.address.district}}
+	
 											</span>
-
+	
 										</li>
-
+	
 										<li>
-
-											<h3>邮箱</h3>
-
-											<span>王浩宇</span><a href="mailto:steven@wooodfield-china.com ">&nbsp;steven@wooodfield-china.com</a>
-
-											<br/>
-
-											<span>撒兴建</span><a href="mailto:alex@woodfield-china.com ">&nbsp;alex@woodfield-china.com </a>
-
+	
+											<h3>{{language.emailName}}</h3>
+											<div v-for="email in language.email">
+												<span>{{email.name}}</span><a :href="email.href">&nbsp;{{email.value}}</a>
+											</div>	
 										</li>
-
+	
 										<li>
-
-											<h3>联系方式</h3>
-
-											<span>王浩宇</span><span>&nbsp;(+86) 156 1875 7908</span>
-
-											<br/>
-
-											<span>撒兴建</span><span>&nbsp;(+86) 182 2127 9859</span>
-
+	
+											<h3>{{language.phoneName}}</h3>
+											<div v-for="phone in language.phone">
+												<span>{{phone.name}}</span><a :href="phone.href">&nbsp;{{phone.value}}</a>
+											</div>	
 										</li>
-
+	
 										<!-- <li>
-
+	
 											<h3>Social</h3>
-
+	
 											<ul class="icons">
-
+	
 												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-
+	
 												<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-
+	
 												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
-
+	
 												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-
+	
 												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
-
+	
 											</ul>
-
+	
 										</li> -->
-
+	
 									</ul>
-
+	
 								</section>
-
+	
 							</div>
-
+	
 						</div>
-
+	
 					</section>
-
+	
 			</div>
-
-		<!-- Footer -->
+	
+			<!-- Footer -->
 			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy;上海木易国际有限公司</a></li>
-					</ul>
-				</div>
-			</footer>
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy;上海木易国际有限公司</a></li>
+				</ul>
+			</div>
+		</footer>
+		
+			
+		</div>
+
+		<!--mask 轮播图-->
+		<div id="mask"  v-show ="showMask">
+			<div class="close" @click = "closeMask()">×</div>
+			<div class="swiper-container gallery-top">
+		        <div class="swiper-wrapper">
+		            <div class="swiper-slide" v-for="img in language" >
+		            	<img :src="img.image" alt="" />
+		            </div>		            
+		        </div>
+		        <!-- Add Arrows -->
+		        <div class="swiper-button-next swiper-button-white"></div>
+		        <div class="swiper-button-prev swiper-button-white"></div>
+		    </div>
+		    <div class="swiper-container gallery-thumbs">
+		        <div class="swiper-wrapper">
+		            <div class="swiper-slide" v-for="img in language" >
+		            	<img :src="img.image" alt="" />
+		            </div>		            
+		        </div>
+		    </div>			
+		</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -310,6 +230,7 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/swiper.js" type="text/javascript" charset="utf-8"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/vue-action.js" type="text/javascript" charset="utf-8"></script>
 
